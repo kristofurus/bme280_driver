@@ -204,7 +204,7 @@ def save_to_db(T, H, P):
     con = sqlite3.connect("instance/bme280.db")
     cur = con.cursor()
     data = [datetime.datetime.now(), T, H, P]
-    cur.execute("INSERT INTO bme280 VALUES(?, ?, ?, ?)", data)
+    cur.execute("INSERT INTO bme280 VALUES(?, ?, ?, ?, ?)", data)
     con.commit()
     con.close()
 
@@ -239,5 +239,8 @@ if __name__ == "__main__":
         log_temp(temp_data, T)
         log_pres(pres_data, P)
         log_hum(hum_data, H)
+
+        save_to_db(T, H, P)
+
         time.sleep(SLEEP_TIME)
     
