@@ -201,7 +201,7 @@ def log_time():
 
 
 def save_to_db(T, H, P):
-    con = sqlite3.connect("instance/bme280.db")
+    con = sqlite3.connect("/instance/bme280.db")
     cur = con.cursor()
     data = [datetime.datetime.now(), T, H, P]
     cur.execute("INSERT INTO bme280(receive_time, temp, hum, pres) VALUES(?, ?, ?, ?)", data)
