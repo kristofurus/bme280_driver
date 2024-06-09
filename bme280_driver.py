@@ -1,5 +1,6 @@
 import smbus2
 import time
+import datetime
 import numpy as np
 
 # I2C channel and slave address
@@ -193,6 +194,10 @@ def log_hum(hum_data, H):
     print(f"hum: {H:.2f} %")
 
 
+def log_time():
+    print("-------------TIME----------------")
+    print(datetime.datetime.now())
+
 if __name__ == "__main__":
     # connect bme280 to I2C-1 on raspberry pi
     bme280 = smbus2.SMBus(channel)
@@ -219,6 +224,7 @@ if __name__ == "__main__":
         P = bme280_calcP(pres_data, calibr_data, P_idx, t_fine)
         H = bme280_calcH(hum_data, calibr_data, H_idx, t_fine)
 
+        log_time()
         log_temp(temp_data, T)
         log_pres(pres_data, P)
         log_hum(hum_data, H)
