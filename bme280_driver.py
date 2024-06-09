@@ -1,6 +1,7 @@
 import smbus2
 import time
 import datetime
+import sqlite3
 import numpy as np
 
 # I2C channel and slave address
@@ -197,6 +198,16 @@ def log_hum(hum_data, H):
 def log_time():
     print("-------------TIME----------------")
     print(datetime.datetime.now())
+
+
+def save_to_db(T, H, P):
+    con = sqlite3.connect("instance/bme280.db")
+    cur = con.cursor()
+    data = [datetime.datetime.now(), T, H, P]
+    cur.execute("INSERT INTO bme280 VALUES(?, ?, ?, ?)", data)
+    con.commit()
+    con.close()
+
 
 if __name__ == "__main__":
     # connect bme280 to I2C-1 on raspberry pi

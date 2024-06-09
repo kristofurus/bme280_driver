@@ -1,0 +1,43 @@
+body {
+    background-color: #232327;
+    color: #f0f0f0;
+}
+
+table, th, td, caption {
+    border-width: thin;
+    border-style: solid;
+    border-collapse: collapse;
+}
+
+caption {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+th, td, caption {
+    text-align: center;
+    padding: 5px 10px 0 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #434347;
+}
+
+tr:hover {
+    background-color: lightgray;
+    color: black;
+}
+
+a {
+    color: lightblue;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
